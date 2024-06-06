@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patient Episode</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{stylesUrl}}" />
+
+    <style>
+      @font-face {
+        font-family: "GretaArabicAR";
+        src: url("../public/fonts/GretaArabicAR+LT-Regular.otf");
+      }
+
+      @font-face {
+        font-family: "AXtManal";
+        src: url("../public/fonts/AXtManal.otf");
+      }
+
+      body {
+        font-family: GretaArabicAR;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 push-2">
+          <div class="text-center">
+            <img
+              src="{{logoUrl}}"
+              class="mx-auto float-right d-block"
+              alt="logo"
+              width="50%"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center p-1">
+            <h2>Upcoming Appointments المواعيد القادمة</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td class="text-left">Patient Name : {{EnglishName}}</td>
+                <td class="text-right">اسم المريض : {{ArabicName}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Medical Rec # : {{URN}}</td>
+                <td class="text-right">رقم الملف الطبي : {{URN}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Gender : {{GenderEng}}</td>
+                <td class="text-right">الجنس : {{GenderAr}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">ID : {{nid}}</td>
+                <td class="text-right">رقم الهوية : {{nid}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Date Of Birth : {{DOBEng}}</td>
+                <td class="text-right">{{DOBEng}} : تاريخ الميلاد</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Doctor</th>
+                <th scope="col">Clinic</th>
+                <th scope="col">Time</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each reports}}
+              <tr>
+                <td>{{this.care_provider_desc}}</td>
+                <td>{{this.clinic_desc}}</td>
+                <td>{{this.start_time}}</td>
+                <td>{{this.date}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-borderless text-center">
+            <thead>
+              <tr>
+                <td>
+                  Dear Patient , If the Hijri and Gregorian dates don’t
+                  correspond .Please follow the Gregorian date and the visit day
+                  as your guide. Report to the Doctor’s clinic to confirm your
+                  arrival before waiting at the OPS Waiting Area until you are
+                  called in the Clinic. You should bring all medical reports,
+                  laboratory test results, radiological investigations,
+                  medications, and eyeglasses with you to each appointment.
+                  Remember the OPC staff are there to serve you, so please heed
+                  their instructions to ensure the best service the best service
+                  possible This notification is issued by the chatbot and does
+                  not need stamp or signature
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  : عزيزي المريض نود أن نوضح لك بعض أنظمة المستشفى التي تحتاج
+                  إلى معرفتها لتحصل على الخدمة الطبية التخصصية المتاحة لك في هذا
+                  المستشفى , مع اطيب تمنياتنا لك بوافر الصحة والعافية في حالة
+                  اختلاف التاريخ الهجري عن تقويم ام القرى , نرجو الاعتماد على
+                  التقويم الميلادي واليوم المحدد في بطاقة الموعد عند حضورك
+                  للموعد الرجاء التوجه إلى عيادة الطبيب للإبلاغ عن وصولك ثم
+                  الانتظارفي- المنطقة المخصصة حتى يتم استدعاؤك ينبغي أن تحضر معك
+                  كافة التقارير الطبية ونتائج التحاليل المخبرية وفحوصات الأشعة-
+                  والأدوية والنظارات الخاصة بك في كل موعد قد يستغرق وقت الانتظار
+                  في العيادة من ساعة الى 3 ساعات حسب الفحوصات المطلوبة للمريض ,
+                  وقت الموعد تقريبي وضع لتنظيم تسجيل المرضى وليس موعد للدخول على
+                  الطبيب- إن موظفي العيادات وجدوا لتقديم الخدمة إليك فالرجاء
+                  التعاون معهم وإتباع تعليماتهم- للحصول على افضل خدمة ممكنه هذا
+                  الاشعار صادر من نظام الرد الآلي ولا يحتاج لختم او توقيع
+                </td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="footer">
+      <div class="container">
+        <img src="{{footerImg}}" alt="footer" width="100%" />
+      </div>
+    </footer> -->
+  </body>
+</html>

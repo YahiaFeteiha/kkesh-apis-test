@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SICK LEAVE REPORT</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{stylesUrl}}" />
+    <style>
+      .bold {
+        font-weight: bold;
+      }
+
+      ul.dash {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 1em;
+      }
+      ul.dash > li:before {
+        display: inline-block;
+        content: "-";
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      ul.dash-ar {
+        list-style: none;
+        margin-left: 0;
+        padding-right: 1em;
+        direction: rtl;
+      }
+      ul.dash-ar > li:before {
+        display: inline-block;
+        content: "-";
+        width: 1em;
+        margin-right: -1em;
+      }
+      @font-face {
+        font-family: "GretaArabicAR";
+        src: url("../public/fonts/GretaArabicAR+LT-Regular.otf");
+      }
+
+      @font-face {
+        font-family: "AXtManal";
+        src: url("../public/fonts/AXtManal.otf");
+      }
+
+      body {
+        font-family: GretaArabicAR;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 push-2">
+          <div class="text-center">
+            <img
+              src="{{logoUrl}}"
+              class="mx-auto float-right d-block"
+              alt="logo"
+            />
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 push-2">
+          <div class="text-center">
+            <img
+              src="{{logoUrl}}"
+              class="mx-auto float-right d-block"
+              alt="logo"
+              width="50%"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-4 my-5">
+          <div class="text-center p-1">
+            <h4 class="bold">تقرير اجازة مرضية</h4>
+            <h4 class="bold">SICK LEAVE REPORT</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-4 my-5">
+          <table class="table table-bordered table-sm">
+            <tbody>
+              <tr>
+                <td class="text-left">
+                  <span class="d-block"> Patient Name: {{EnglishName}} </span>
+                  <span class="d-block">Medical Rec#: {{report.MRN}}</span>
+                  <span class="d-block">Sex:{{GenderEng}}</span>
+                  <span class="d-block">Date of birth: {{DOBEng}}</span>
+                  <span class="d-block"
+                    >Date of Visit: {{report.Admission}}</span
+                  >
+                  <span class="d-block"
+                    >Admission Date: {{report.Admission}}</span
+                  >
+                  <span class="d-block"
+                    >Discharge Date:{{report.Discharge}}</span
+                  >
+                </td>
+                <td class="text-right">
+                  <span class="d-block">
+                    <bdi> اسم المريض:{{ArabicName}} </bdi>
+                  </span>
+                  <span class="d-block">
+                    <bdi> رقم السجل الطبي: {{report.MRN}} </bdi>
+                  </span>
+                  <span class="d-block"> الجنس: {{GenderAr}} </span>
+
+                  <span class="d-block"> تاريخ الميلاد:{{DOBEng}} </span>
+
+                  <span class="d-block"
+                    >تاريخ المراجعة: {{report.Admission}}</span
+                  >
+                  <span class="d-block"
+                    >تاريخ الدخول: {{report.Admission}}</span
+                  >
+                  <span class="d-block"
+                    >تاريخ الخروج: {{report.Discharge}}</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  <p class="text-center bold">Recommendation</p>
+                  <span>Following medical examination, it is recommended</span>
+                  <ul class="dash">
+                    <li>
+                      <span
+                        >Sick Leave for (In Letters):
+                        {{report.enDuration}}</span
+                      >
+                      <span class="d-block offset-md-2"
+                        >(In Numbers):{{DurationInNumbers}} day(s)</span
+                      >
+                    </li>
+                    <li>
+                      <span
+                        >Starting from: {{report.StartD}} to
+                        {{report.EndD}}</span
+                      >
+                    </li>
+                    <li>Follow up before end of sick leave</li>
+                    <li>
+                      Referral to Medical Committee for following reasons:
+                    </li>
+                    <li>Approval of Sick leave</li>
+                    <li>Cannot be treated at this facility</li>
+                    <li>Permanent or partial disability</li>
+                    <li>Others</li>
+                  </ul>
+                </td>
+                <td class="text-right" style="width: 50%">
+                  <p class="text-center bold">التوصيات</p>
+                  <ul class="dash-ar">
+                    <li>
+                      <span
+                        >منحه اجازة مرضية لمدة (كتابة):
+                        {{report.arDuration}}</span
+                      >
+                      <span class="d-block text-center">
+                        (رقمًا): {{DurationInNumbers}} يوم/ أيامًا
+                      </span>
+                    </li>
+                    <li>
+                      <span
+                        >اعتبارًا من: {{report.StartD}} إلى
+                        {{report.EndD}}</span
+                      >
+                    </li>
+                    <li>مراجعة الطبيب قبل انتهاء إجازته:</li>
+                    <li>
+                      احالته إلى الهيئة الطبية العامة لأحد الأسباب التالية:
+                    </li>
+                    <li>إعتماد التقرير الطبي</li>
+                    <li>من غير الممكن علاجه في المستشفى</li>
+                    <li>
+                      حالته تدل على عجزه الصحي عن العمل بصورة جزئية أو قطعية
+                    </li>
+                    <li>أخرى</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left" style="width: 50%">
+                  <span class="d-block"
+                    >Treating Physician Name: {{report.SickNoteCP}}
+                  </span>
+                  <span class="d-block"
+                    >Approval by Medical Director: Saleh AL-Mesfer</span
+                  >
+                  <span class="d-block">Name: Doctor Saleh AL-Mesfer</span>
+                </td>
+                <td class="text-right" style="width: 50%">
+                  <span class="d-block"
+                    ><bdi>اسم المعالج: {{report.arSickNoteCP}} </bdi></span
+                  >
+                  <span class="d-block">تصديق المدير الطبي: صالح المسفر</span>
+                  <span class="d-block">الدكتور: صالح المسفر</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-right">
+                  <span>مدير مستشفى الملك خالد التخصصي للعيون</span>
+                  <span class="d-block">د. عبدالعزيز الراجحي</span>
+
+                  <span>التاريخ: {{report.CreateD}}</span>
+                  <span class="d-block">الختم الرسمي: </span>
+                  <img
+                    src="{{stampUrl}}"
+                    class="mx-auto float-right d-block"
+                    alt="stamp"
+                    width="90%"
+                  />
+                </td>
+                <td class="text-right col-6">
+                  <p>سعادة المحترم</p>
+                  <ul class="dash-ar">
+                    <li>بشأن طلب الكشف الطبي على الموضح أعلاه</li>
+                    <li>اشارة الى مراجعة الموظف لديكم الموضح اسمه</li>
+                    <li>أعلاه للكشف عليه تجدون بعالية الصادر بشأنه.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="text-right">
+          <span class="d-block">
+            <bdi> ملاحظات:</bdi>
+          </span>
+          <ul class="dash-ar">
+            <li>هذا النموذج صادر بواسطة الحاسب الآلي و لا يحتاج إلى توقيع</li>
+            <li>
+              يمكنكم تحميل تطبيق المستشفى على أجهزة الجوال للاستفادة من الخدمات
+              الإلكترونية ikkesh
+            </li>
+            <li>
+              يمكن التحقق من صحة التقرير عن طريق موقع المستشفى / الخدمات
+              الإلكترونية / الخدمات الحكومية / التحقق من إجازة مرضية
+            </li>
+          </ul>
+          <p>www.kkesh.med.sa</p>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="footer">
+      <div class="container">
+        <img src="{{footerImg}}" alt="footer" width="100%" />
+      </div>
+    </footer> -->
+  </body>
+</html>

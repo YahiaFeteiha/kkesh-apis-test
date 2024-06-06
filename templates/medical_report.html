@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical Report</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{stylesUrl}}" />
+    <style>
+      @font-face {
+        font-family: "GretaArabicAR";
+        src: url("../public/fonts/GretaArabicAR+LT-Regular.otf");
+      }
+
+      @font-face {
+        font-family: "AXtManal";
+        src: url("../public/fonts/AXtManal.otf");
+      }
+
+      html {
+        position: relative;
+        min-height: 100%;
+      }
+      body {
+        margin: 0;
+        margin-bottom: 0px;
+        font-family: GretaArabicAR;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+      }
+
+      .container {
+        width: auto;
+        /* max-width: 680px; */
+        padding: 0 15px;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+      div > h5 {
+        font-weight: bold;
+        text-transform: uppercase !important;
+      }
+
+      div p {
+        text-align: left !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 push-2">
+          <div class="text-center">
+            <img
+              src="{{logoUrl}}"
+              class="mx-auto float-right d-block"
+              alt="logo"
+              width="50%"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center p-1">
+            <h2>Medical Report</h2>
+          </div>
+          <span>Issued Date: {{issuedDate}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-sm">
+            <tbody>
+              <tr>
+                <td class="text-left">
+                  Patient Name:
+                  <span class="bold">{{report.englishName}}</span>
+                </td>
+                <td class="">
+                  Doctor:<span class="bold"> {{report.CareProvider}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  Gender/Age:
+                  <span class="bold">{{report.gender}}/{{report.age}}</span>
+                </td>
+                <td class="">
+                  Clinic: <span class="bold">{{report.ClinicName}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  Patient ID: <span class="bold">{{report.patientID}}</span>
+                </td>
+                <td class="">
+                  Admission Date: <span class="bold">{{report.Ep_Date}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                  Episode ID : <span class="bold">{{report.Ep_No}}</span>
+                </td>
+                <td class="">
+                  Discharge Date :
+                  <span class="bold">{{report.Ep_Dis_Date}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 main border">
+            <div id="allergies">
+              <h5>ALLERGIES :</h5>
+              {{#each report.Allergies}}
+              <div id="allergies-details" class="row">
+                <p class="col-3">
+                  Category:<span class="bold"> {{this.Category}}</span>
+                </p>
+                <p class="col-3">
+                  Allergen:
+                  <span class="bold">{{this.Allergen}}</span>
+                </p>
+                <p class="col-3">
+                  Reaction:<span class="bold">{{this.Reaction}}</span>
+                </p>
+                <p class="col-3">
+                  Severity:<span class="bold">{{this.Severity}}</span>
+                </p>
+              </div>
+              <hr />
+              {{/each}}
+            </div>
+
+            <div id="alerts">
+              <h5>ALERTS :</h5>
+              {{#each report.Alerts}}
+              <div id="alerts-details" class="row">
+                <p class="col-3">
+                  Category:<span class="bold"> {{this.Category}}</span>
+                </p>
+                <p class="col-3">
+                  Alert:
+                  <span class="bold">{{this.Alert}}</span>
+                </p>
+                <p class="col-3">
+                  Comment:<span class="bold">{{this.Comment}}</span>
+                </p>
+                <p class="col-3">
+                  Date:<span class="bold">{{this.Date}}</span>
+                </p>
+              </div>
+              <hr />
+              {{/each}}
+            </div>
+
+            <div id="principal-diagnosis">
+              <h5>PRINCIPAL DIAGNOSIS</h5>
+              <div id="principal-diagnosis-details">
+                <p class="bold">{{report.PrincipalDiagnosis}}</p>
+              </div>
+            </div>
+            <div id="active-problems">
+              <h5>Active Problems</h5>
+              <div id="active-problems-details">
+                <p class="bold">{{report.ActiveProblems}}</p>
+              </div>
+            </div>
+            <div id="suggestions">
+              <h5>Suggestions For Doctor</h5>
+              <div id="suggestions-details">
+                <p class="bold">{{report.Suggestions}}</p>
+              </div>
+            </div>
+            <div id="procedures">
+              <h5>PROCEDURE/S</h5>
+              <div id="procedures-details">
+                <p class="bold">{{report.Procedures}}</p>
+              </div>
+            </div>
+            <div id="clinical-notes">
+              <h5>CLINICAL NOTES (N)</h5>
+              <div id="clinical-notes-details">
+                {{#each report.clinicalNotes}}
+                <p class="bold">Type: {{this.type}}, Note: {{this.note}}</p>
+                {{/each}}
+              </div>
+            </div>
+            <div id="progress-notes">
+              <h5>PROGRESS NOTES</h5>
+              <div id="progress-notes-details">
+                <p class="bold">{{report.ProgressNotes}}</p>
+              </div>
+            </div>
+            <div id="clinical-opinion">
+              <h5>CLINICAL OPINION/MANAGEMENT PLAN</h5>
+              <div id="clinical-opinion-details">
+                <p class="bold">{{report.ClinicalOpinion}}</p>
+              </div>
+            </div>
+            <div id="date-stamp">
+              <div id="date-stamp-details" class="row">
+                <p class="col-6 bold">Printed Date: {{PrintedDate}}</p>
+                <div class="col-6">
+                  <p class="col-6 bold">Hospital Stamp:</p>
+                  <img src="{{stampUrl}}" class="" alt="stamp" />
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <p class="col-12">
+                This certificate is system generated and is generated
+                automatically through KKESH Chabot.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="footer">
+      <div class="container">
+        <img src="{{footerImg}}" alt="footer" width="100%" />
+      </div>
+    </footer> -->
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patient Episode</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{stylesUrl}}" />
+
+    <style>
+      @font-face {
+        font-family: "GretaArabicAR";
+        src: url("../public/fonts/GretaArabicAR+LT-Regular.otf");
+      }
+
+      @font-face {
+        font-family: "AXtManal";
+        src: url("../public/fonts/AXtManal.otf");
+      }
+
+      body {
+        font-family: GretaArabicAR;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 push-2">
+          <div class="text-center">
+            <img
+              src="{{logoUrl}}"
+              class="mx-auto float-right d-block"
+              alt="logo"
+              width="50%"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center p-1">
+            <h2>Patient Visit Report تقرير الزيارات السابقة</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td class="text-left">Patient Name : {{EnglishName}}</td>
+                <td class="text-right">اسم المريض : {{ArabicName}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Medical Rec # : {{URN}}</td>
+                <td class="text-right">رقم الملف الطبي : {{URN}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Gender : {{GenderEng}}</td>
+                <td class="text-right">الجنس : {{GenderAr}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">ID : {{nid}}</td>
+                <td class="text-right">رقم الهوية : {{nid}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Date Of Birth : {{DOBEng}}</td>
+                <td class="text-right">{{DOBEng}} : تاريخ الميلاد</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Visit Status</th>
+                <th scope="col">Care Provider</th>
+                <th scope="col">Clinic</th>
+                <th scope="col">Admission Time</th>
+                <th scope="col">Admission Date</th>
+                <th scope="col">Discharge Time</th>
+                <th scope="col">Discharge Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each reports}}
+              <tr>
+                <td>{{this.VisitStatus}}</td>
+                <td>{{this.care_provider_desc_En}}</td>
+                <td>{{this.clinic_desc_En}}</td>
+                <td>{{this.Admission_Time}}</td>
+                <td>{{this.Admission_Date}}</td>
+                <td>{{this.Dischg_Time}}</td>
+                <td>{{this.Dischg_Date}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-borderless text-center">
+            <thead>
+              <tr>
+                <td>
+                  There is no residence for patient companions inside or outside
+                  KKESH
+                </td>
+                <td>
+                  لا يوجد سكن خاص داخل أو خارج مستشفى الملك خالد التخصصي للعيون
+                  لمرافقي المرض المنومين
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  This notification is issued by the chatbot and does not need
+                  stamp or signature
+                </td>
+                <td>
+                  هذا الإشعار صادر بواسطة نظام الرد الآلي ولا يحتاج الى ختم او
+                  توقيع
+                </td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="footer">
+      <div class="container">
+        <img src="{{footerImg}}" alt="footer" width="100%" />
+      </div>
+    </footer> -->
+  </body>
+</html>
